@@ -1,0 +1,35 @@
+profile: stage
+
+server:
+  port: 80
+
+spring:
+  mvc:
+    static-path-pattern: /static/**
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
+  http: # http encoding 설정
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+
+jasypt:
+  encryptor:
+    password: hskey_enc
+
+datasource:
+  hs:
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    jdbc-url: jdbc:sqlserver://172.21.40.107:1398;DatabaseName=HANSSEM
+    username: hanssem
+    password: gkstoa
+  emma:
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    jdbc-url: jdbc:sqlserver://172.21.40.107:2398;DatabaseName=EMMA
+    username: emma
+    password: emma2015!
+
+image-server:
+  url: ${profile}/aaa

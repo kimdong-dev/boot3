@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.henry.api.mapper.BoardMapper">
+	
+	<select id="selectBoardMap" parameterType="java.lang.Long" resultType="com.henry.api.dto.BoardDto">
+		/* BoardMapper.selectBoardMap */
+		SELECT * FROM BOARD_T WHERE BOARD_IDX = #{idx}
+	</select>
+	
+</mapper>

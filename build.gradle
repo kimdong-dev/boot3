@@ -1,0 +1,68 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.2.2'
+    id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = 'com.henry'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    sourceCompatibility = '17'
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    //implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-web-services'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    compileOnly group: 'javax.servlet', name: 'javax.servlet-api', version: '3.0.1'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    implementation group: 'commons-beanutils', name: 'commons-beanutils', version: '1.9.3'
+    implementation 'org.apache.commons:commons-lang3:3.5'
+    implementation group: 'commons-codec', name: 'commons-codec', version: '1.9'
+    implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    // MyBatis 라이브러리 의존성 추가 (boot 3.2 이상)
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.3'
+    runtimeOnly 'mysql:mysql-connector-java:8.0.25'
+
+    // H2
+    runtimeOnly 'com.h2database:h2'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+//tasks : clean build
+//Arguments : -Pprofile=stage
+ext.profile = (!project.hasProperty('profile') || !profile) ? 'local' : profile
+sourceSets {
+    main {
+        //각 자바 패키지 내에 있는 mapper xml 파일들을 각 자바 패키지에 동일하게 배포
+        java {
+            resources {
+                srcDirs = ["src/main/java"]
+                includes = ["**/*.xml"]
+            }
+        }
+
+        resources {
+            srcDirs "src/main/resources", "src/main/resources-${profile}" //각 profile 별 해당하는 설정파일들을 rootPath 에 포함 (application.yaml, logback.xml)
+            includes = ["**/*.*"] //static 및 기타자원 rootPath 에 포함
+        }
+    }
+}
