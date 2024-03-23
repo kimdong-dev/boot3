@@ -16,9 +16,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class BoardCtrl {
 
 	private BoardService boardService;
+	//git remote add origin https://github.com/kimdong-dev/boot3.git
 	@GetMapping(value = "/main")
 	public String doGetHelloWorld() {
-		System.out.println("doGetHelloWorld dev 브랜치에서 수정2");
+		System.out.println("doGetHelloWorld dev 브랜치에서 수정3");
 		return "Hello World";
 	}
 
