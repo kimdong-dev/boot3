@@ -26,7 +26,6 @@ public class MyBatisInterceptor implements Interceptor {
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes", "unused" })
 	public Object intercept(final Invocation invocation) throws Exception {
-		
 		// 환경 파악
 		StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
 		if (isDuplicated(stackTrace)) { // when mapper.xml file reloaded by jRebel, plugIn called duplicate by mapper class
