@@ -16,10 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class BoardCtrl {
 
 	private BoardService boardService;
-
 	@GetMapping(value = "/main")
 	public String doGetHelloWorld() {
-		System.out.println("doGetHelloWorld dev 브랜치에서 수정");
+		System.out.println("doGetHelloWorld dev 브랜치에서 수정2");
 		return "Hello World";
 	}
 
