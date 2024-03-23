@@ -19,7 +19,7 @@ public class BoardCtrl {
 
 	@GetMapping(value = "/main")
 	public String doGetHelloWorld() {
-		System.out.println("doGetHelloWorld");
+		System.out.println("doGetHelloWorld dev 브랜치에서 수정");
 		return "Hello World";
 	}
 
