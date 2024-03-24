@@ -19,7 +19,6 @@ public class BoardCtrl {
 	//git remote add origin https://github.com/kimdong-dev/boot3.git
 	@GetMapping(value = "/main")
 	public String doGetHelloWorld() {
-		System.out.println("doGetHelloWorld dev 브랜치에서 수정6");
 		return "Hello World";
 	}
 
